@@ -1,0 +1,18 @@
+- name: create the '{{ user }}' user
+  user: name={{ user }}
+        append=yes
+        state=present
+        createhome=yes
+        shell=/bin/bash
+        groups="sudo, docker"
+
+- name: allow '{{ user }}' to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: set up authorized keys for the {{ user }}
+  authorized_key: user={{ user }} key="{{item}}"
+  with_file:
+    - ~/.ssh/id_rsa.pub
