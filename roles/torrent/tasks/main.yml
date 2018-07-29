@@ -1,0 +1,6 @@
+- name: Install apps
+  apt: pkg="{{item}}" state="present"
+  with_items:
+    - qbittorrent
+    - qbittorrent-nox
+    - openvpn

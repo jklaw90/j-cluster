@@ -1,11 +1,11 @@
 ---
-- name: Provision Nginx Proxy
-  hosts: proxy
+- name: Provision torrent
+  hosts: torrent
   become: yes
   become_user: root
   any_errors_fatal: true
   roles:
     - common
-    - proxy
+    - torrent
   vars:
     user: jadmin

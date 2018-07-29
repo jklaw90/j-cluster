@@ -4,7 +4,7 @@
         state=present
         createhome=yes
         shell=/bin/bash
-        groups=docker
+        groups=sudo
 
 - name: allow '{{ user }}' to have passwordless sudo
   lineinfile:

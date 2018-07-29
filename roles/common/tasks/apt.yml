@@ -2,17 +2,23 @@
   apt:
     update_cache: yes
     cache_valid_time: 600
-- name: apt cache purge
-  apt:
-    autoclean: yes
-    autoremove: yes
+
 - name: apt dist update
   apt:
     upgrade: dist
+
 - name: Install common apps
   apt: pkg="{{item}}" state="present"
   with_items:
+    - ca-certificates
     - apt-transport-https
+    - software-properties-common
     - fail2ban
     - htop
     - vim
+    - curl
+
+- name: apt cache cleanup
+  apt:
+    autoclean: yes
+    autoremove: yes

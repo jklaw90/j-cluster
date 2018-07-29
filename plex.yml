@@ -1,0 +1,11 @@
+---
+- name: Provision plex
+  hosts: plex
+  become: yes
+  become_user: root
+  any_errors_fatal: true
+  roles:
+    - common
+    - nfs-server
+  vars:
+    user: jadmin

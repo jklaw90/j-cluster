@@ -1,7 +1,17 @@
-- name: install Docker
-  apt:
-    name: docker
+- name: add docker apt-key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
+
+- name: Add Docker repository.
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+    update_cache: yes
+
+- name: Install Docker
+  apt:
+    name: docker-ce
 
 - name: add Kubernetes apt-key
   apt_key:
@@ -10,9 +20,9 @@
 
 - name: add Kubernetes' APT repository
   apt_repository:
-  repo: deb http://apt.kubernetes.io/ kubernetes-stretch main
-  state: present
-  filename: 'kubernetes'
+    repo: deb http://apt.kubernetes.io/ kubernetes-stretch main
+    state: present
+    filename: 'kubernetes'
 
 - name: install kubelet
   apt:
