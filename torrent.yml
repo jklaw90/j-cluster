@@ -9,3 +9,6 @@
     - torrent
   vars:
     user: jadmin
+    ovpn: lax.conf
+    auth: auth.txt
+    service: lax

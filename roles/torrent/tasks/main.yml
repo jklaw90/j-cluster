@@ -4,3 +4,38 @@
     - qbittorrent
     - qbittorrent-nox
     - openvpn
+
+- name: Create ovpn directory
+  file:
+    path: /etc/ovpn/.ovpn
+    state: directory
+
+- name: Copy ovpn file
+  copy:
+    dest: /etc/openvpn/{{ ovpn }}
+    src: ovpn/{{ ovpn }}
+    mode: 0400
+
+- name: Copy ovpn auth
+  copy:
+    dest: /etc/openvpn/{{ auth }}
+    src: ovpn/{{ auth }}
+    mode: 0400
+
+- name: start ovpn on boot
+  systemd:
+    name: openvpn@{{ service }}
+    enabled: yes
+    state: started
+
+- name: Copy qbitservice
+  copy:
+    dest: /etc/systemd/system/qbit.service
+    src: qbit/qbit.service
+    mode: 755
+
+- name: start qbit on boot
+  systemd:
+    name: qbit.service
+    enabled: yes
+    state: started
