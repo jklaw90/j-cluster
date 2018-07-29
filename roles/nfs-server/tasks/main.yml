@@ -1,1 +1,14 @@
-- import_tasks: apt.yml
+- name: install nfs-kernel-server
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: mount external hdd
+  mount:
+    path: '{{ mnt_location }}'
+    src: '{{ src }}'
+    fstype: ext4
+    opts: defaults
+    passno: 2
+    state: present
+    

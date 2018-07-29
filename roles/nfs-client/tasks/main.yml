@@ -1,0 +1,9 @@
+- name: mount nfs
+  mount:
+    path: '{{ mnt_location }}'
+    src: '{{ src }}'
+    fstype: nfs
+    opts: defaults
+    passno: 2
+    state: present
+    

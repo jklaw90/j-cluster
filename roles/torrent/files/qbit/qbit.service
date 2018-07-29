@@ -1,6 +1,6 @@
 [Unit]
 Description=qbit
-After=network.target
+After=openvpn@lax.service
 StartLimitIntervalSec=0
 
 [Service]

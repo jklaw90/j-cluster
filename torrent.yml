@@ -7,8 +7,11 @@
   roles:
     - common
     - torrent
+    - nfs-client
   vars:
     user: jadmin
+    src: 192.168.1.240:/mnt/jhdd/Media/Download
+    mnt_location: /home/{{ user }}/Downloads
     ovpn: lax.conf
     auth: auth.txt
     service: lax
