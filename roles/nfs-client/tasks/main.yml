@@ -1,3 +1,8 @@
+- name: install nfs-common
+  apt:
+    name: nfs-common
+    state: present
+
 - name: mount nfs
   mount:
     path: '{{ mnt_location }}'
