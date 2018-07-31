@@ -1,0 +1,13 @@
+---
+- name: Provision proxmox nfs
+  hosts: proxmox
+  become: yes
+  become_user: root
+  any_errors_fatal: true
+  roles:
+    - nfs-server
+    - geerlingguy.nfs
+  vars:
+    src: "UUID=ffc8bb0f-2d72-4ac0-bf21-b1553d81970d"
+    mnt_location: /mnt/jhdd
+    nfs_exports: [ "/mnt/jhdd *(rw,sync,no_root_squash)" ]
