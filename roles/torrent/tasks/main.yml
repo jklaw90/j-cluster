@@ -28,14 +28,19 @@
     enabled: yes
     state: started
 
-- name: Copy qbitservice
-  copy:
-    dest: /etc/systemd/system/qbit.service
-    src: qbit/qbit.service
-    mode: 755
+    #- name: Copy qbitservice
+    #  copy:
+      #dest: /etc/systemd/system/qbit.service
+      #src: qbit/qbit.service
+      # mode: 755
 
-- name: start qbit on boot
-  systemd:
-    name: qbit.service
-    enabled: yes
-    state: started
+      #- name: start qbit on boot
+      #systemd:
+        #name: qbit.service
+        #enabled: yes
+        #state: started
+
+- name: transmission
+  template:
+    src: templates/transmission/settings.js
+    dest: /#TODO

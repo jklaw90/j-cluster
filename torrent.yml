@@ -15,3 +15,4 @@
     ovpn: lax.conf
     auth: auth.txt
     service: lax
+    bind_address: 0.0.0.0
